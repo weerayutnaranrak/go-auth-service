@@ -12,8 +12,7 @@ func Migrate() {
 		config.GetDB(),
 		gormigrate.DefaultOptions,
 		[]*gormigrate.Migration{
-			m16620166385User(),
-			m1662091994User(),
+			m1662366357User(),
 		},
 	)
 	if err := m.Migrate(); err != nil {

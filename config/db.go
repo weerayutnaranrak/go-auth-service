@@ -31,7 +31,10 @@ func InitDatabase() {
 	)
 	dial := postgres.Open(dsn)
 	var err error
-	db, err = gorm.Open(dial, &gorm.Config{})
+	db, err = gorm.Open(dial, &gorm.Config{
+		Logger: &SqlLogger{},
+		DryRun: false,
+	})
 	if err != nil {
 		panic(err)
 	}

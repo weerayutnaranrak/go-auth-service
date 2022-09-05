@@ -1,10 +1,23 @@
 package routes
 
-import "github.com/gin-gonic/gin"
+import (
+	"auth-service/middleware"
+	"net/http"
 
-func AuthRoutes(r *gin.Engine) {
-	authGroup := r.Group("/auth")
+	"github.com/gin-gonic/gin"
+)
 
-	authGroup.POST("/login", func(ctx *gin.Context) {})
+func authRoutes(r *gin.Engine) {
+	authGroup := r.Group("api/v1/auth")
+	authGroup.POST("/login", middleware.AuthorizeJWT(), func(ctx *gin.Context) {})
 	authGroup.POST("/register", func(ctx *gin.Context) {})
+	authGroup.Use(middleware.AuthorizeJWT())
+	{
+		authGroup.GET("/test", func(ctx *gin.Context) {
+			ctx.JSON(http.StatusOK, gin.H{
+				"message": "Ok",
+			})
+		})
+	}
+
 }
