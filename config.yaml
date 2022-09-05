@@ -1,0 +1,10 @@
+app:
+  port: 5000
+
+db:
+  driver: "mysql"
+  host: "db.yufpakzafxrxndwztehi.supabase.co"
+  port: 5432
+  username: postgres
+  password: YgXTJxj65!efr3P
+  database: postgres
