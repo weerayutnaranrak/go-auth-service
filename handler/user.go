@@ -1,24 +1,24 @@
 package handler
 
 import (
-	"auth-service/service"
+	userService "auth-service/service/user"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 type userHandler struct {
-	userSrv service.UserService
+	userSrv userService.UserService
 }
 
-func NewUserHandler(userSrv service.UserService) userHandler {
+func NewUserHandler(userSrv userService.UserService) userHandler {
 	return userHandler{
 		userSrv: userSrv,
 	}
 }
 
 func (h userHandler) CreateUser(ctx *gin.Context) {
-	user, _ := h.userSrv.NewUser(service.NewUserRequest{Name: "test2"})
+	user, _ := h.userSrv.NewUser(userService.NewUserRequest{Name: "test2"})
 	ctx.JSON(http.StatusCreated, gin.H{
 		"data": user,
 	})

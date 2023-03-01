@@ -1,21 +1,21 @@
 package service
 
 import (
-	repository "auth-service/repository/user"
+	userRepository "auth-service/repository/user"
 
 	"github.com/jinzhu/copier"
 )
 
 type userService struct {
-	repo repository.UserRepository
+	repo userRepository.UserRepository
 }
 
-func NewUserService(repo repository.UserRepository) UserService {
+func NewUserService(repo userRepository.UserRepository) UserService {
 	return userService{repo: repo}
 }
 
 func (s userService) NewUser(user NewUserRequest) (*UserResponse, error) {
-	newUser := repository.User{Name: user.Name}
+	newUser := userRepository.User{Name: user.Name}
 	data, err := s.repo.CreateUser(newUser)
 	if err != nil {
 		println(err)

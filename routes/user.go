@@ -2,15 +2,15 @@ package routes
 
 import (
 	"auth-service/handler"
-	repository "auth-service/repository/user"
-	"auth-service/service"
+	userRepository "auth-service/repository/user"
+	userService "auth-service/service/user"
 
 	"github.com/gin-gonic/gin"
 )
 
 func userGroupRoutes(r *gin.Engine) {
-	userRepo := repository.NewUserRepositoryDB()
-	userService := service.NewUserService(userRepo)
+	userRepo := userRepository.NewUserRepositoryDB()
+	userService := userService.NewUserService(userRepo)
 	userHandler := handler.NewUserHandler(userService)
 	testGruup := r.Group("api/v1/user")
 
