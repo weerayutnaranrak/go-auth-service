@@ -1,7 +1,7 @@
 package migrations
 
 import (
-	"auth-service/repository"
+	repository "auth-service/repository/user"
 
 	"github.com/go-gormigrate/gormigrate/v2"
 	"gorm.io/gorm"

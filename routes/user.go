@@ -2,7 +2,7 @@ package routes
 
 import (
 	"auth-service/handler"
-	"auth-service/repository"
+	repository "auth-service/repository/user"
 	"auth-service/service"
 
 	"github.com/gin-gonic/gin"

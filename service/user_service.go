@@ -1,7 +1,7 @@
 package service
 
 import (
-	"auth-service/repository"
+	repository "auth-service/repository/user"
 
 	"github.com/jinzhu/copier"
 )
